@@ -73,4 +73,18 @@ public class Uthyrningssystem
         uthyrningar.Add(new Uthyrning(kund!, fordon, timmar));
         return $"{kund!.Namn} hyr {fordon.Typ} {fordon.Nummer} i {timmar} timmar.";
     }
+    public string LamnaTillbaka(int nummer)
+    {
+        Fordon? fordon = HittaFordon(nummer);
+        if (fordon == null)
+            return "Fordonet finns inte.";
+
+        Uthyrning? uthyrning = uthyrningar.FirstOrDefault(u => u.Fordon.Nummer == nummer);
+        if (uthyrning == null)
+            return "Fordonet är inte uthyrt.";
+
+        fordon.LamnaTillbaka(uthyrning.Timmar);
+        uthyrningar.Remove(uthyrning);
+        return uthyrning.KvittoText();
+    }
 }

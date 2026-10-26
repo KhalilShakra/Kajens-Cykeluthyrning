@@ -1,5 +1,6 @@
 ﻿namespace Kajens_Cykeluthyrning;
 
+using System.Globalization;
 public class Uthyrning
 {
     private const decimal Medlemsrabatt = 0.10m;
@@ -30,5 +31,20 @@ public class Uthyrning
     public decimal AttBetala()
     {
         return Pris() - Rabatt();
+    }
+
+    public string KvittoText()
+    {
+        CultureInfo svensk = new CultureInfo("sv-SE");
+
+        string beskrivning = $"{Fordon.Typ}, {Timmar} timmar à {Fordon.Timpris:0} kr";
+        string text = "KVITTO\n";
+        text += $"{beskrivning,-28}{Pris().ToString("F2", svensk)} kr\n";
+
+        if (Kund.ArMedlem)
+            text += $"{"Medlemsrabatt (10 %)",-28}-{Rabatt().ToString("F2", svensk)} kr\n";
+
+        text += $"{"Att betala",-28}{AttBetala().ToString("F2", svensk)} kr";
+        return text;
     }
 }

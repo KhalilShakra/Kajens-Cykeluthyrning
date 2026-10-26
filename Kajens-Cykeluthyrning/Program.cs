@@ -22,6 +22,8 @@ while (kor)
             HyrUt();
             break;
         case 4:
+            LamnaTillbaka();
+            break;
         case 5:
             Console.WriteLine("Inte klart än.");
             break;
@@ -106,4 +108,11 @@ bool LasJaNej(string fraga)
             return false;
         Console.WriteLine("Svara j eller n.");
     }
+
+}
+
+void LamnaTillbaka()
+{
+    int nummer = LasTal("Fordonsnummer: ");
+    Console.WriteLine(system.LamnaTillbaka(nummer));
 }
