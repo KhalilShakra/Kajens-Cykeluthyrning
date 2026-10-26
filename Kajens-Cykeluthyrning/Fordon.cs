@@ -1,4 +1,6 @@
-﻿public abstract class Fordon
+﻿namespace Kajens_Cykeluthyrning;
+
+public abstract class Fordon
 {
     public int Nummer { get; }
     public decimal Timpris { get; }

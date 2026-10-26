@@ -1,10 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Kajens_Cykeluthyrning;
 
-namespace Kajens_Cykeluthyrning
+public class Elcykel : Fordon
 {
-    internal class Elcykel
+    private int batteri;
+
+    public int Batteri
     {
+        get { return batteri; }
+        private set
+        {
+            if (value < 0)
+                batteri = 0;
+            else if (value > 100)
+                batteri = 100;
+            else
+                batteri = value;
+        }
+    }
+
+    public override string Typ => "Elcykel";
+
+    public Elcykel(int nummer, int startBatteri) : base(nummer, 70m)
+    {
+        Batteri = startBatteri;
     }
 }

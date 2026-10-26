@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Kajens_Cykeluthyrning;
 
-namespace Kajens_Cykeluthyrning
+public class Cykel : Fordon
 {
-    internal class Cykel
+    public Cykel(int nummer) : base(nummer, 40m)
     {
     }
+
+    public override string Typ => "Cykel";
 }
