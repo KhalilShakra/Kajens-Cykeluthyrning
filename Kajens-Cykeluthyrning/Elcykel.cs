@@ -24,4 +24,9 @@ public class Elcykel : Fordon
     {
         Batteri = startBatteri;
     }
+
+    public override string BatteriText()
+    {
+        return $"{Batteri} %";
+    }
 }

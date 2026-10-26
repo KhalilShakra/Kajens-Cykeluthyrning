@@ -14,4 +14,16 @@ public abstract class Fordon
         Timpris = timpris;
         ArUthyrd = false;
     }
+
+    public string StatusText()
+    {
+        if (ArUthyrd)
+            return "uthyrd";
+        return "ledig";
+    }
+
+    public virtual string BatteriText()
+    {
+        return "";
+    }
 }
