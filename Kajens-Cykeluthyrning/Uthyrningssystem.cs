@@ -87,4 +87,18 @@ public class Uthyrningssystem
         uthyrningar.Remove(uthyrning);
         return uthyrning.KvittoText();
     }
+    public string Ladda(int nummer)
+    {
+        Fordon? fordon = HittaFordon(nummer);
+        if (fordon == null)
+            return "Fordonet finns inte.";
+
+        if (fordon is Elcykel elcykel)
+        {
+            elcykel.Ladda();
+            return $"Elcykel {elcykel.Nummer} är laddad till {elcykel.BatteriText()}.";
+        }
+
+        return $"{fordon.Typ} {fordon.Nummer} har inget batteri att ladda.";
+    }
 }

@@ -25,7 +25,7 @@ while (kor)
             LamnaTillbaka();
             break;
         case 5:
-            Console.WriteLine("Inte klart än.");
+            Ladda();
             break;
         case 6:
             kor = false;
@@ -115,4 +115,9 @@ void LamnaTillbaka()
 {
     int nummer = LasTal("Fordonsnummer: ");
     Console.WriteLine(system.LamnaTillbaka(nummer));
+}
+void Ladda()
+{
+    int nummer = LasTal("Fordonsnummer: ");
+    Console.WriteLine(system.Ladda(nummer));
 }
