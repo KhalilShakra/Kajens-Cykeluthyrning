@@ -7,4 +7,5 @@ public class Cykel : Fordon
     }
 
     public override string Typ => "Cykel";
+    public override int MinimiAlder => 15;
 }

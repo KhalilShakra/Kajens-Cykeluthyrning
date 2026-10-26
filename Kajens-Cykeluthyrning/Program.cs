@@ -14,4 +14,7 @@ Console.WriteLine("Nr  Typ      Status  Batteri");
 foreach (Fordon f in fordon)
 {
     Console.WriteLine($"{f.Nummer,-3} {f.Typ,-8} {f.StatusText(),-7} {f.BatteriText()}");
+
+
 }
+

@@ -19,7 +19,7 @@ public class Elcykel : Fordon
     }
 
     public override string Typ => "Elcykel";
-
+    public override int MinimiAlder => 18;
     public Elcykel(int nummer, int startBatteri) : base(nummer, 70m)
     {
         Batteri = startBatteri;
