@@ -48,6 +48,12 @@ public class Uthyrningssystem
         if (kund.Alder < fordon.MinimiAlder)
             return $"{kund.Namn} måste vara minst {fordon.MinimiAlder} år för att hyra en {fordon.Typ.ToLower()}.";
 
+        if (fordon.ArUthyrd)
+            return $"{fordon.Typ} {fordon.Nummer} är redan uthyrd.";
+
+        if (fordon.BehoverLaddas())
+            return $"{fordon.Typ} {fordon.Nummer} har för lite batteri ({fordon.BatteriText()}). Ladda den först.";
+
         return null;
     }
 
