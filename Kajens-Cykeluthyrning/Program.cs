@@ -19,6 +19,8 @@ while (kor)
             RegistreraKund();
             break;
         case 3:
+            HyrUt();
+            break;
         case 4:
         case 5:
             Console.WriteLine("Inte klart än.");
@@ -62,6 +64,22 @@ int LasTal(string fraga)
     }
 }
 
+void HyrUt()
+{
+    Console.Write("Kund: ");
+    string namn = Console.ReadLine() ?? "";
+    int nummer = LasTal("Fordonsnummer: ");
+
+    string? fel = system.KontrolleraUthyrning(namn, nummer);
+    if (fel != null)
+    {
+        Console.WriteLine(fel);
+        return;
+    }
+
+    int timmar = LasTal("Antal timmar: ");
+    Console.WriteLine(system.HyrUt(namn, nummer, timmar));
+}
 void RegistreraKund()
 {
     Console.Write("Namn: ");

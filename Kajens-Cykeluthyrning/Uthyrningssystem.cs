@@ -24,4 +24,47 @@ public class Uthyrningssystem
         kunder.Add(kund);
         return kund;
     }
+
+    public Kund? HittaKund(string namn)
+    {
+        return kunder.FirstOrDefault(k => k.Namn.ToLower() == namn.Trim().ToLower());
+    }
+
+    public Fordon? HittaFordon(int nummer)
+    {
+        return fordon.FirstOrDefault(f => f.Nummer == nummer);
+    }
+
+    public string? KontrolleraUthyrning(string kundnamn, int nummer)
+    {
+        Kund? kund = HittaKund(kundnamn);
+        if (kund == null)
+            return "Kunden finns inte.";
+
+        Fordon? fordon = HittaFordon(nummer);
+        if (fordon == null)
+            return "Fordonet finns inte.";
+
+        if (kund.Alder < fordon.MinimiAlder)
+            return $"{kund.Namn} måste vara minst {fordon.MinimiAlder} år för att hyra en {fordon.Typ.ToLower()}.";
+
+        return null;
+    }
+
+    public string HyrUt(string kundnamn, int nummer, int timmar)
+    {
+        string? fel = KontrolleraUthyrning(kundnamn, nummer);
+        if (fel != null)
+            return fel;
+
+        if (timmar < 1)
+            return "Antal timmar måste vara minst 1.";
+
+        Kund? kund = HittaKund(kundnamn);
+        Fordon? fordon = HittaFordon(nummer);
+
+        fordon!.HyrUt();
+        uthyrningar.Add(new Uthyrning(kund!, fordon, timmar));
+        return $"{kund!.Namn} hyr {fordon.Typ} {fordon.Nummer} i {timmar} timmar.";
+    }
 }
