@@ -16,6 +16,8 @@ while (kor)
             VisaFordon();
             break;
         case 2:
+            RegistreraKund();
+            break;
         case 3:
         case 4:
         case 5:
@@ -57,5 +59,33 @@ int LasTal(string fraga)
         if (int.TryParse(text, out int tal))
             return tal;
         Console.WriteLine("Skriv ett heltal.");
+    }
+}
+
+void RegistreraKund()
+{
+    Console.Write("Namn: ");
+    string namn = Console.ReadLine() ?? "";
+    int alder = LasTal("Ålder: ");
+    bool arMedlem = LasJaNej("Medlem (j/n): ");
+
+    Kund kund = system.RegistreraKund(namn, alder, arMedlem);
+    Console.WriteLine($"{kund.Namn} är registrerad.");
+}
+
+bool LasJaNej(string fraga)
+{
+    while (true)
+    {
+        Console.Write(fraga);
+        string? text = Console.ReadLine();
+        if (text == null)
+            continue;
+        text = text.Trim().ToLower();
+        if (text == "j")
+            return true;
+        if (text == "n")
+            return false;
+        Console.WriteLine("Svara j eller n.");
     }
 }

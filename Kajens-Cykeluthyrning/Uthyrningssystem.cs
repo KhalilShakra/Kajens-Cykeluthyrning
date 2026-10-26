@@ -18,4 +18,10 @@ public class Uthyrningssystem
     {
         return fordon;
     }
+    public Kund RegistreraKund(string namn, int alder, bool arMedlem)
+    {
+        Kund kund = new Kund(namn, alder, arMedlem);
+        kunder.Add(kund);
+        return kund;
+    }
 }
