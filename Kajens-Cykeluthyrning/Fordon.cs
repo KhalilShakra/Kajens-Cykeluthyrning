@@ -41,4 +41,9 @@ public abstract class Fordon
     {
         return "";
     }
+
+    public virtual bool BehoverLaddas()
+    {
+        return false;
+    }
 }

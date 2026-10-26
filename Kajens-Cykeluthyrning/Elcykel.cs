@@ -3,7 +3,7 @@
 public class Elcykel : Fordon
 {
 
-    private const int ForbrukningPerTimme = 10;
+    private const int ForbrukningPerTimme = 10; private const int MinstaBatteri = 30;
     private int batteri;
 
     public int Batteri
@@ -32,10 +32,20 @@ public class Elcykel : Fordon
         return $"{Batteri} %";
     }
 
-    // Batteriet dras vid återlämning, när det är klart hur många timmar cykeln användes
+ 
     public override void LamnaTillbaka(int timmar)
     {
         base.LamnaTillbaka(timmar);
         Batteri -= timmar * ForbrukningPerTimme;
+    }
+
+    public void Ladda()
+    {
+        Batteri = 100;
+    }
+
+    public override bool BehoverLaddas()
+    {
+        return Batteri < MinstaBatteri;
     }
 }
