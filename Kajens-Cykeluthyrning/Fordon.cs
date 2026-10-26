@@ -19,6 +19,17 @@ public abstract class Fordon
     {
         return Timpris * timmar;
     }
+
+    public void HyrUt()
+    {
+        ArUthyrd = true;
+    }
+
+    public virtual void LamnaTillbaka(int timmar)
+    {
+        ArUthyrd = false;
+    }
+
     public string StatusText()
     {
         if (ArUthyrd)

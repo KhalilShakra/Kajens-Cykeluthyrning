@@ -2,6 +2,8 @@
 
 public class Elcykel : Fordon
 {
+
+    private const int ForbrukningPerTimme = 10;
     private int batteri;
 
     public int Batteri
@@ -28,5 +30,12 @@ public class Elcykel : Fordon
     public override string BatteriText()
     {
         return $"{Batteri} %";
+    }
+
+    // Batteriet dras vid återlämning, när det är klart hur många timmar cykeln användes
+    public override void LamnaTillbaka(int timmar)
+    {
+        base.LamnaTillbaka(timmar);
+        Batteri -= timmar * ForbrukningPerTimme;
     }
 }
