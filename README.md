@@ -2,4 +2,4 @@
 
 ## UML-klassdiagram
 
-![UML](uml.png)
+![UML](Kajens-Cykeluthyrning/uml.png.png)
